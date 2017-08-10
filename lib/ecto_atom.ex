@@ -20,6 +20,7 @@ defmodule Ecto.Atom do
   def cast(_), do: :error
 
   def load(value), do: {:ok, String.to_existing_atom(value)}
+  def load({value, :utf8}), do: {:ok, String.to_existing_atom(value)}
 
   def dump(value) when is_atom(value), do: {:ok, Atom.to_string(value)}
   def dump(_), do: :error
